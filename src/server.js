@@ -11,8 +11,8 @@ const ClientError = require('./exceptions/ClientError');
 const init = async () => {
   const notesService = new NotesService();
   const server = Hapi.server({
-    port: process.prod.env.PORT,
-    host: process.prod.env.HOST,
+    port: process.env.PORT,
+    host: process.env.HOST,
     routes: {
       cors: {
         origin: ['*'],
