@@ -1,13 +1,10 @@
+const autoBind = require('auto-bind');
+
 class NotesHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
-
-    this.postNoteHandler = this.postNoteHandler.bind(this);
-    this.getNotesHandler = this.getNotesHandler.bind(this);
-    this.getNoteByIdHandler = this.getNoteByIdHandler.bind(this);
-    this.putNoteByIdHandler = this.putNoteByIdHandler.bind(this);
-    this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
+    autoBind(this);
   }
 
   async postNoteHandler(request, h) {
@@ -37,7 +34,7 @@ class NotesHandler {
     };
   }
 
-  async getNoteByIdHandler(request, h) {
+  async getNoteByIdHandler(request) {
     const { id } = request.params;
     const note = await this._service.getNoteById(id);
     return {
@@ -48,7 +45,7 @@ class NotesHandler {
     };
   }
 
-  async putNoteByIdHandler(request, h) {
+  async putNoteByIdHandler(request) {
     this._validator.validateNotePayload(request.payload);
     const { id } = request.params;
 
@@ -60,7 +57,7 @@ class NotesHandler {
     };
   }
 
-  async deleteNoteByIdHandler(request, h) {
+  async deleteNoteByIdHandler(request) {
     const { id } = request.params;
     await this._service.deleteNoteById(id);
 
