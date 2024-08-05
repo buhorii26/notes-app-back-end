@@ -10,9 +10,14 @@ class UploadsHandler {
 
   async postUploadImageHandler(request, h) {
     const { data } = request.payload;
-    console.log('Request Payload', request.payload);
-    console.log('Data', data);
-    console.log('Data Hapi', data.hapi);
+    if (!data || !data.hapi) {
+      const response = h.response({
+        status: 'fail',
+        message: 'Invalid file upload payload',
+      });
+      response.code(400);
+      return response;
+    }
     this._validator.validateImageHeaders(data.hapi.headers);
 
     const filename = await this._service.writeFile(data, data.hapi);

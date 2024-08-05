@@ -12,6 +12,7 @@ node_modules
 .prod.env
 .eslintrc.json
 notes-server-sg-key.pem
+src/api/uploads/file
 
 # Editor directories and files
 .vscode/*
