@@ -13,6 +13,7 @@ node_modules
 .eslintrc.json
 notes-server-sg-key.pem
 src/api/uploads/file
+bori26_accessKeys.csv
 
 # Editor directories and files
 .vscode/*
