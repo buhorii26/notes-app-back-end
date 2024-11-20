@@ -39,6 +39,9 @@ const UploadsValidator = require('./validator/uploads');
 // cache
 const CacheService = require('./services/redis/CacheService');
 
+// logger
+const logger = require('./logger');
+
 const init = async () => {
   const cacheService = new CacheService();
   const collaborationsService = new CollaborationsService(cacheService);
@@ -146,6 +149,11 @@ const init = async () => {
       return newResponse;
     }
 
+    logger.info(
+      `userIP=${request.info.remoteAddress}, host=${request.hostname},  method=${
+        request.method
+      }, path=${request.path}, payload=${JSON.stringify(response.source)}`,
+    );
     return h.continue;
   });
 

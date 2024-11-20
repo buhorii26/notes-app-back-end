@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\xampp\\htdocs\\notes-app-back-end\\src\\logger\\.f99542f7c10a84c8ebc9fb1108a80641da93f3e3-audit.json",
+    "files": [
+        {
+            "date": 1732077362885,
+            "name": "C:\\xampp\\htdocs\\notes-app-back-end\\src\\logger\\application-2024-11-20-13.log",
+            "hash": "b7d680e9afaf34c701c5e3b0aa334227dd5cdcdb153daf3c9c4c013b232cf737"
+        }
+    ],
+    "hashType": "sha256"
+}
