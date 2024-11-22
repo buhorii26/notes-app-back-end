@@ -2,7 +2,7 @@
 require('dotenv').config();
 const Hapi = require('@hapi/hapi');
 const Jwt = require('@hapi/jwt');
-// eslint-disable-next-line import/no-extraneous-dependencies
+const os = require('os');
 const Inert = require('@hapi/inert');
 const ClientError = require('./exceptions/ClientError');
 // notes
@@ -150,7 +150,7 @@ const init = async () => {
     }
 
     logger.info(
-      `userIP=${request.info.remoteAddress}, host=${request.hostname},  method=${
+      `userIP=${request.info.remoteAddress}, host=${os.hostname},  method=${
         request.method
       }, path=${request.path}, payload=${JSON.stringify(response.source)}`,
     );
